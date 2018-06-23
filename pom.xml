@@ -9,8 +9,8 @@
 
     <packaging>jar</packaging>
 
-    <name>my-blog</name>
-    <description>my-blog</description>
+    <name>kooola</name>
+    <description>kooola blog</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
