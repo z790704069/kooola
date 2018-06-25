@@ -413,6 +413,9 @@
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
       </if>
+      <if test="bgImg != null">
+        bg_img = #{bgImg,jdbcType=VARCHAR}
+      </if>
     </set>
     where cid = #{cid,jdbcType=INTEGER}
   </update>

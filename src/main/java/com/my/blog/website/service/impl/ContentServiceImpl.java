@@ -213,6 +213,9 @@ public class ContentServiceImpl implements IContentService {
         if (null == contents.getAuthorId()) {
             return "请登录后发布文章";
         }
+        if (null == contents.getBgImg()){
+            return "文章背景图片不能为空";
+        }
         if (StringUtils.isBlank(contents.getSlug())) {
             contents.setSlug(null);
         }
