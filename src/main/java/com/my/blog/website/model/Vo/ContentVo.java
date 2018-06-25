@@ -86,6 +86,12 @@ public class ContentVo implements Serializable {
      */
     private String content;
 
+
+    /**
+     * 文章的背景图片，用于页面展示
+     */
+    private String bgImg;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getCid() {
@@ -214,5 +220,13 @@ public class ContentVo implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getBgImg() {
+        return bgImg;
+    }
+
+    public void setBgImg(String bgImg) {
+        this.bgImg = bgImg;
     }
 }

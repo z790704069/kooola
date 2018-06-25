@@ -17,6 +17,7 @@
     <result column="allow_comment" jdbcType="BIT" property="allowComment" />
     <result column="allow_ping" jdbcType="BIT" property="allowPing" />
     <result column="allow_feed" jdbcType="BIT" property="allowFeed" />
+    <result column="bg_img" jdbcType="VARCHAR" property="bgImg" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.my.blog.website.model.Vo.ContentVo">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
@@ -81,7 +82,7 @@
   </sql>
   <sql id="Base_Column_List">
     cid, title, slug, created, modified, author_id, type, status, tags, categories, hits, 
-    comments_num, allow_comment, allow_ping, allow_feed
+    comments_num, allow_comment, allow_ping, allow_feed, bg_img
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -148,13 +149,13 @@
       type, status, tags, 
       categories, hits, comments_num, 
       allow_comment, allow_ping, allow_feed, 
-      content)
+      content, bg_img)
     values (#{cid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{slug,jdbcType=VARCHAR}, 
       #{created,jdbcType=INTEGER}, #{modified,jdbcType=INTEGER}, #{authorId,jdbcType=INTEGER}, 
       #{type,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{tags,jdbcType=VARCHAR}, 
       #{categories,jdbcType=VARCHAR}, #{hits,jdbcType=INTEGER}, #{commentsNum,jdbcType=INTEGER}, 
       #{allowComment,jdbcType=BIT}, #{allowPing,jdbcType=BIT}, #{allowFeed,jdbcType=BIT}, 
-      #{content,jdbcType=LONGVARCHAR})
+      #{content,jdbcType=LONGVARCHAR}, #{bgImg, jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.my.blog.website.model.Vo.ContentVo" useGeneratedKeys="true" keyProperty="cid">
     insert into t_contents

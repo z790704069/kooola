@@ -67,6 +67,9 @@ public class ContentServiceImpl implements IContentService {
         if (null == contents.getAuthorId()) {
             return "请登录后发布文章";
         }
+        if(null == contents.getBgImg()){
+            return "文章背景图片为空";
+        }
         if (StringUtils.isNotBlank(contents.getSlug())) {
             if (contents.getSlug().length() < 5) {
                 return "路径太短了";
