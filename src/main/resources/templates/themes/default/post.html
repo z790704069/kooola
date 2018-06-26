@@ -17,8 +17,8 @@
         <p class="post-tags" th:utext="${commons.show_tags(article.tags)}"></p>
         <th:block th:utext="${commons.article(article.content)}"/>
         <p class="post-info">
-            本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名,转载请标明出处<br/>最后编辑时间为:
-            <th:block th:text="${commons.fmtdate(article.modified, 'yyyy/MM/dd HH:mm')}"/>
+            <!--最后编辑时间:-->
+            <!--<th:block th:text="${commons.fmtdate(article.modified, 'yyyy-MM-dd HH:mm')}"/>-->
         </p>
     </div>
 </article>
