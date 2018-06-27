@@ -11,6 +11,7 @@ import com.my.blog.website.model.Vo.UserVo;
 import com.my.blog.website.service.IAttachService;
 import com.my.blog.website.service.ILogService;
 import com.my.blog.website.utils.Commons;
+import com.my.blog.website.utils.ImageUtils;
 import com.my.blog.website.utils.TaleUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -82,12 +84,15 @@ public class AttachController extends BaseController {
                 if (multipartFile.getSize() <= WebConst.MAX_FILE_SIZE) {
                     String fkey = TaleUtils.getFileKey(fname);
                     String ftype = TaleUtils.isImage(multipartFile.getInputStream()) ? Types.IMAGE.getType() : Types.FILE.getType();
-                    File file = new File(CLASSPATH + fkey);
+                    String fileName = CLASSPATH + fkey;
+                    File file = new File(fileName);
                     try {
                         FileCopyUtils.copy(multipartFile.getInputStream(), new FileOutputStream(file));
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    ImageUtils.makeWatermarkWithText("http://kooola.com", fileName, "华为楷体", 5);
                     attachService.save(fname, fkey, ftype, uid);
                 } else {
                     errorFiles.add(fname);
