@@ -5,29 +5,32 @@ package com.my.blog.website.utils;
  * 图片工具类
  */
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import javax.imageio.ImageIO;
+import java.awt.Color;
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 public class ImageUtils {
-    public static int MIN_FONT_SIZE = 10; //最小字体大小
+    public static int MIN_FONT_SIZE = 15; //最小字体大小
     public static int REDUCE_SCALE = 20;  //文字虽小比例，根据图片大小进行动态设置字体大小
+    public static String MARK_TEXT = "http://kooola.com";
+    public static String FONT_NAME = "华为楷体";
+    public static int FONT_STYLE = 5;
+    private static Color TEXT_COLOR = Color.GRAY;
+
 
     /**
      *
-     * @param text  文本
-     * @param img 目标图标
-     * @param fontName 字体名称
-     * @param fontStyle 字体样式
+//     * @param text  文本
+     * @param img 目标图标path
+//     * @param fontName 字体名称
+//     * @param fontStyle 字体样式
      */
-    public static void makeWatermarkWithText(String text, String img, String fontName, int fontStyle){
+    public static void makeWatermark(String img){
         int fontSize = 40;
 
 
@@ -42,7 +45,7 @@ public class ImageUtils {
         int height = src.getHeight(null);
 
         int size = width > height ? height : width;
-        fontSize = size < MIN_FONT_SIZE ? MIN_FONT_SIZE : size / REDUCE_SCALE;
+        fontSize = size / REDUCE_SCALE < MIN_FONT_SIZE ? MIN_FONT_SIZE : size / REDUCE_SCALE;
 
 
         // x,y 为文字开始的相对位置
@@ -53,9 +56,11 @@ public class ImageUtils {
 
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics graphics = image.createGraphics();
-        graphics.drawImage(src, 0, 0, width, height, Color.GRAY, null);
-        graphics.setFont(new Font(fontName, fontStyle, fontSize));
-        graphics.drawString(text, x, y);
+        graphics.drawImage(src, 0, 0, width, height, null);
+        graphics.setFont(new Font(FONT_NAME, FONT_STYLE, fontSize));
+        graphics.setColor(TEXT_COLOR);
+        graphics.drawString(MARK_TEXT, x, y);
+
         graphics.dispose();
         FileOutputStream fileOutputStream = null;
         try{
@@ -76,6 +81,6 @@ public class ImageUtils {
         }
     }
     public static void main(String[] args){
-        makeWatermarkWithText("http://kooola.com", "/Users/march/6.jpg", "华为楷体", 5);
+        makeWatermark("/Users/march/1.jpg");
     }
 }
