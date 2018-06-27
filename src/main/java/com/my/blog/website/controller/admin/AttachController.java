@@ -92,7 +92,7 @@ public class AttachController extends BaseController {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    ImageUtils.makeWatermarkWithText("http://kooola.com", fileName, "华为楷体", 5);
+                    ImageUtils.makeWatermark(fileName);
                     attachService.save(fname, fkey, ftype, uid);
                 } else {
                     errorFiles.add(fname);
