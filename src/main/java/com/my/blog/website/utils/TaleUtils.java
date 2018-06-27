@@ -271,7 +271,7 @@ public class TaleUtils {
      *
      * @param value
      * @return
-     */
+c'x     */
     public static String cleanXSS(String value) {
         //You'll need to remove the spaces from the html entities below
         value = value.replaceAll("<", "&lt;").replaceAll(">", "&gt;");

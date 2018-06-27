@@ -47,8 +47,8 @@ public class BaseInterceptor implements HandlerInterceptor {
         // System.out.println(contextPath);
         String uri = request.getRequestURI();
 
-        LOGGE.info("UserAgent: {}", request.getHeader(USER_AGENT));
-        LOGGE.info("用户访问地址: {}, 来路地址: {}", uri, IPKit.getIpAddrByRequest(request));
+        LOGGE.info("请求路径:{}, ip：{}, UserAgent:{}",uri,
+                IPKit.getIpAddrByRequest(request), request.getHeader(USER_AGENT));
 
 
         //请求拦截处理

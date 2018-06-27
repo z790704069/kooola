@@ -25,10 +25,7 @@ public class ImageUtils {
 
     /**
      *
-//     * @param text  文本
      * @param img 目标图标path
-//     * @param fontName 字体名称
-//     * @param fontStyle 字体样式
      */
     public static void makeWatermark(String img){
         int fontSize = 40;
@@ -45,6 +42,7 @@ public class ImageUtils {
         int height = src.getHeight(null);
 
         int size = width > height ? height : width;
+        //根据图片大小动态设置字体大小
         fontSize = size / REDUCE_SCALE < MIN_FONT_SIZE ? MIN_FONT_SIZE : size / REDUCE_SCALE;
 
 
@@ -81,6 +79,6 @@ public class ImageUtils {
         }
     }
     public static void main(String[] args){
-        makeWatermark("/Users/march/1.jpg");
+        makeWatermark("/Users/march/Downloads/t9gg6570quh5koe6fqkdil2sqm.jpg");
     }
 }
