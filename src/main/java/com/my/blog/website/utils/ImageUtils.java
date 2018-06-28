@@ -7,10 +7,13 @@ package com.my.blog.website.utils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import javax.imageio.ImageIO;
 import java.awt.Color;
+import java.io.OutputStream;
+
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
@@ -28,9 +31,6 @@ public class ImageUtils {
      * @param img 目标图标path
      */
     public static void makeWatermark(String img){
-        int fontSize = 40;
-
-
         File file = new File(img);
         Image src = null;
         try{
@@ -43,7 +43,7 @@ public class ImageUtils {
 
         int size = width > height ? height : width;
         //根据图片大小动态设置字体大小
-        fontSize = size / REDUCE_SCALE < MIN_FONT_SIZE ? MIN_FONT_SIZE : size / REDUCE_SCALE;
+        int fontSize = size / REDUCE_SCALE < MIN_FONT_SIZE ? MIN_FONT_SIZE : size / REDUCE_SCALE;
 
 
         // x,y 为文字开始的相对位置
@@ -58,25 +58,15 @@ public class ImageUtils {
         graphics.setFont(new Font(FONT_NAME, FONT_STYLE, fontSize));
         graphics.setColor(TEXT_COLOR);
         graphics.drawString(MARK_TEXT, x, y);
-
         graphics.dispose();
-        FileOutputStream fileOutputStream = null;
+
         try{
-            fileOutputStream = new FileOutputStream(img);
+            OutputStream out = new FileOutputStream(file);
+            ImageIO.write(image, "jpeg", out);
         }catch (Exception e){
             e.printStackTrace();
         }
-        JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(fileOutputStream);
-        try{
-            encoder.encode(image);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        try {
-            fileOutputStream.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
     }
     public static void main(String[] args){
         makeWatermark("/Users/march/Downloads/t9gg6570quh5koe6fqkdil2sqm.jpg");
