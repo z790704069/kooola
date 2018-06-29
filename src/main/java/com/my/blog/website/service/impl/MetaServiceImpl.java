@@ -47,6 +47,7 @@ public class MetaServiceImpl implements IMetaService {
         return null;
     }
 
+
     @Override
     public Integer countMeta(Integer mid) {
         return metaDao.countWithSql(mid);
@@ -214,4 +215,5 @@ public class MetaServiceImpl implements IMetaService {
             metaDao.updateByPrimaryKeySelective(metas);
         }
     }
+
 }

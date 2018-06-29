@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="themes/default/header::header(null,null)"></div>
+
+<body>
+<div class="main-content index-page clearfix">
+    <th:block th:each="c : ${categories}">
+        <div class="btn-group m-b-10">
+            <th:block th:unless="${c.name == '默认分类'}">
+                <button type="button">
+                    <a th:href="${commons.categoryLink(c)}" th:text="${c.name} + ' ('+${c.count}+')'">
+                    <!--<th:block th:text="${c.name}"/>-->
+                    <!--<th:block th:text="' ('+${c.count}+')'"/>-->
+                    </a>
+                    <span class="caret"></span>
+                </button>
+            </th:block>
+        </div>
+    </th:block>
+</div>
+</body>
+
+
+
+<div th:replace="themes/default/footer::footer"></div>
+</html>

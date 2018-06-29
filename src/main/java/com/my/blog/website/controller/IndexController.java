@@ -59,7 +59,7 @@ public class IndexController extends BaseController {
      * @return
      */
     @GetMapping(value = "/")
-    public String index(HttpServletRequest request, @RequestParam(value = "limit", defaultValue = "12") int limit) {
+    public String index(HttpServletRequest request, @RequestParam(value = "limit", defaultValue = "6") int limit) {
         return this.index(request, 1, limit);
     }
 
@@ -72,7 +72,7 @@ public class IndexController extends BaseController {
      * @return 主页
      */
     @GetMapping(value = "page/{p}")
-    public String index(HttpServletRequest request, @PathVariable int p, @RequestParam(value = "limit", defaultValue = "12") int limit) {
+    public String index(HttpServletRequest request, @PathVariable int p, @RequestParam(value = "limit", defaultValue = "6") int limit) {
         p = p < 0 || p > WebConst.MAX_PAGE ? 1 : p;
         PageInfo<ContentVo> articles = contentService.getContents(p, limit);
         request.setAttribute("articles", articles);
@@ -242,6 +242,18 @@ public class IndexController extends BaseController {
 
     /**
      * 分类页
+     * @return
+     */
+    @GetMapping(value = "categories")
+    public String categoryContentCounts(HttpServletRequest request){
+        List<MetaDto> metaDtos = metaService.getMetaList(Types.CATEGORY.getType(), null, WebConst.MAX_POSTS);
+        request.setAttribute("categories", metaDtos);
+        return this.render("category");
+    }
+
+
+    /**
+     * 分类页
      *
      * @return
      */
@@ -373,6 +385,8 @@ public class IndexController extends BaseController {
     public String tags(HttpServletRequest request, @PathVariable String name, @RequestParam(value = "limit", defaultValue = "12") int limit) {
         return this.tags(request, name, 1, limit);
     }
+
+
 
     /**
      * 标签分页

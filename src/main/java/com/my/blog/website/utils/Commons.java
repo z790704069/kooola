@@ -3,6 +3,7 @@ package com.my.blog.website.utils;
 
 import com.github.pagehelper.PageInfo;
 import com.my.blog.website.constant.WebConst;
+import com.my.blog.website.dto.MetaDto;
 import com.my.blog.website.model.Vo.ContentVo;
 import com.vdurmont.emoji.EmojiParser;
 import org.apache.commons.lang3.StringUtils;
@@ -148,6 +149,11 @@ public final class Commons {
      */
     public static String permalink(ContentVo contents) {
         return permalink(contents.getCid(), contents.getSlug());
+    }
+
+
+    public static String categoryLink(MetaDto metaDto){
+        return site_url("/category/" + metaDto.getName());
     }
 
 
