@@ -1,2 +1,2 @@
-博客地址：kooola.com (考拉博客)
+考拉的网络日志：kooola.com/www.kooola.com
 邮箱：zwq20110815@gmail.com
