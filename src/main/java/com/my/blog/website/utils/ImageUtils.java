@@ -19,7 +19,7 @@ import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 public class ImageUtils {
     public static int MIN_FONT_SIZE = 15; //最小字体大小
-    public static int REDUCE_SCALE = 20;  //文字虽小比例，根据图片大小进行动态设置字体大小
+    public static int REDUCE_SCALE = 20;  //文字最小比例，根据图片大小进行动态设置字体大小
     public static String MARK_TEXT = "http://kooola.com";
     public static String FONT_NAME = "华为楷体";
     public static int FONT_STYLE = 5;
