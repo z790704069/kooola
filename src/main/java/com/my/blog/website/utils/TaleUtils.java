@@ -179,7 +179,7 @@ public class TaleUtils {
     /**
      * 从cookies中获取指定cookie
      *
-     * @param name    名称
+     * @param name    名称S
      * @param request 请求
      * @return cookie
      */
