@@ -306,6 +306,16 @@ public class IndexController extends BaseController {
         return this.render("links");
     }
 
+
+    /**
+     * 关于页
+     */
+    @GetMapping(value = "about")
+    public String about(HttpServletRequest request){
+        return this.render("about");
+    }
+
+
     /**
      * 自定义页面,如关于的页面
      */

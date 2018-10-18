@@ -51,10 +51,11 @@
             <img th:src="@{/user/img/logo.png}" alt="首页"/>
         </a>
         <div class="navbar-menu">
-            <a th:href="${commons.site_url('/')}">Home</a>
-            <a th:href="${commons.site_url('/categories')}">Categories</a>
-            <a th:href="${commons.site_url('/archives')}">Archives</a>
-            <a th:href="${commons.site_url('/links')}">About</a>
+            <a th:href="${commons.site_url('/')}">首页</a>
+            <a th:href="${commons.site_url('/categories')}">分类</a>
+            <a th:href="${commons.site_url('/archives')}">归档</a>
+            <a th:href="${commons.site_url('/links')}">友链</a>
+            <a th:href="${commons.site_url('/about')}">关于</a>
         </div>
         <div class="navbar-search" onclick="">
             <span class="icon-search"></span>
@@ -68,10 +69,11 @@
         <div class="navbar-mobile-menu" onclick="">
             <span class="icon-menu cross"><span class="middle"></span></span>
             <ul>
-                <li><a th:href="${commons.site_url('/')}">Home</a></li>
-                <li><a th:href="${commons.site_url('/categories')}">Categories</a></li>
-                <li><a th:href="${commons.site_url('/archives')}">Archives</a></li>
-                <li><a th:href="${commons.site_url('/links')}">About</a></li>
+                <li><a th:href="${commons.site_url('/')}">首页</a></li>
+                <li><a th:href="${commons.site_url('/categories')}">分类</a></li>
+                <li><a th:href="${commons.site_url('/archives')}">归档</a></li>
+                <li><a th:href="${commons.site_url('/links')}">友链</a></li>
+                <li><a th:href="${commons.site_url('/about')}">关于</a></li>
             </ul>
         </div>
     </div>

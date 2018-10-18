@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div th:replace="themes/default/header::header(title='友情链接',keywords=null)"></div>
+<div th:replace="themes/default/header::header(null,null)"></div>
+
 <body>
 <article class="main-content post-page">
     <div id="post-content" class="post-content">
-        <h3>About</h3>
-        <pre><code class="lang-md hljs markdown">
-            <b>Blog Name：</b> 考拉的网络日志
-            <b>Site：</b> <a href="https://www.kooola.com">https://www.kooola.com</a>
-            <b>Name：</b>  张卫庆
-            <b>E-mail：</b> zwq20110815@gmail.com
-            <b>Github：</b> <a href="https://github.com/z790704069">https://github.com/z790704069</a>
-            <b>Twitter：</b>  <a href="https://twitter.com/weiqing_zhang">https://twitter.com/weiqing_zhang</a>
-            <b>Facebook：</b>  <a href="https://www.facebook.com/profile.php?id=100015373092649">https://www.facebook.com/profile.php?id=100015373092649</a>
-            <b>CSDN: </b> <a href="https://blog.csdn.net/z644041867">https://blog.csdn.net/z644041867</a>
-            <img src="https://www.kooola.com/upload/2018/10/ujbuli4uu6ipiobr7bspkrmqdc.jpg"/>
-        </code></pre>
+        <h3>友情链接</h3>
+        想与本站互为友链的朋友
+        <a target="_BLANK" href="https://github.com/z790704069/kooola-links/issues/1">
+            <font color="red" >『请点击这里』</font>
+        </a>
+        我会尽量一一回复，期待与你的交流
+        <p></p>
 
-        </div>
+        <th:block th:each="link : ${links}">
+            <div>
+                <a target="_BLANK"  th:href="${link.slug}">
+                    「<u><font color="blue"><th th:text="${link.name}"/></font></u>」
+                </a>
+            </div>
+        </th:block>
+    </div>
 </article>
 
 </body>
-<!--<div th:replace="themes/default/footer::footer"></div>-->
 </html>

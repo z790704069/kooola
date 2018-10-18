@@ -3,21 +3,20 @@
 <div th:replace="themes/default/header::header(null,null)"></div>
 
 <body>
-<div class="main-content index-page clearfix">
+<article class="main-content post-page">
+<div id="post-content" class="post-content">
+    <h3>分类</h3>
     <th:block th:each="c : ${categories}">
         <div class="btn-group m-b-10">
             <th:block th:unless="${c.name == '默认分类'}">
-                <button type="button">
-                    <a th:href="${commons.categoryLink(c)}" th:text="${c.name} + ' ('+${c.count}+')'">
-                    <!--<th:block th:text="${c.name}"/>-->
-                    <!--<th:block th:text="' ('+${c.count}+')'"/>-->
-                    </a>
-                    <span class="caret"></span>
-                </button>
+                <a th:href="${commons.categoryLink(c)}" >
+                    「<u><font color="blue"> <th th:text="${c.name} + ' ('+${c.count}+')'"/></font></u>」
+                </a>
             </th:block>
         </div>
     </th:block>
 </div>
+</article>
 </body>
 
 
