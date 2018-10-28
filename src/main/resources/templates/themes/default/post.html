@@ -9,7 +9,8 @@
         </h1>
         <div class="post-data">
             <time th:datetime="${commons.fmtdate(article.created)}" itemprop="datePublished" th:text="'发布于 '+ ${commons.fmtdate(article.created)}"></time>
-            / <th:block th:utext="${commons.show_categories(article.categories)}"/>
+            <th:block th:utext="${commons.show_categories(article.categories)}"/>
+            <th:block th:text="${article.hits}"/> 浏览
         </div>
     </div>
     <div id="post-content" class="post-content" itemprop="articleBody">
@@ -17,11 +18,10 @@
         <th:block th:utext="${commons.article(article.content)}"/>
 
         <p>
-            <img src="https://www.kooola.com/upload/2018/10/ofjvdo746uj67pmdue0iho59c5.png"/>
-            <font color="blue">关注微信公众号</font><font color="red"><b> "Kooola大数据" </b></font> <font color="blue">聊人生|聊技术</font>
+            <img height="200" width="200" src="https://www.kooola.com/upload/2018/10/ujbuli4uu6ipiobr7bspkrmqdc.jpg"/>
+            <center><font color="grey">关注微信公众号</font><font color="red"> "Kooola大数据" </font> <font color="grey">:) 聊人生 | 聊技术</font></center>
         </p>
     </div>
 </article>
-<!--<div th:replace="themes/default/footer::footer"></div>-->
 </body>
 </html>
